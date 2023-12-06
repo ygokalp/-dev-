@@ -1,0 +1,104 @@
+import datetime
+start_date = datetime.date(1901, 1, 1)
+end_date = datetime.date(2000, 12, 31)
+sundays_count = 0
+current_date = start_date
+while current_date <= end_date:
+    current_date += datetime.timedelta(days=1)
+import datetime
+
+start_date = datetime.date(1901, 1, 1)
+end_date = datetime.date(2000, 12, 31)
+current_date = start_date
+sundays_count = 0
+while current_date <= end_date:
+    if current_date.day == 1:
+        current_date += datetime.timedelta(days=1)
+import datetime
+start_date = datetime.date(1901, 1, 1)
+end_date = datetime.date(2000, 12, 31)
+sundays_count = 0 
+while current_date <= end_date:
+    if current_date.day == 1:
+      if current_date.weekday() == 6:
+          sundays_count += 1
+current_date += datetime.timedelta(days=1)
+if start_date.weekday() == 6:
+    sundays_count += 1
+def is_leap_year(year):
+    if year % 4 == 0:
+        if year % 100 == 0:
+            if year % 400 == 0:
+                return True
+            else:
+                return False
+        else:
+            return True
+    else: return False
+test_year = 2000
+print(f"Is {test_year} a leap year? {is_leap_year(test_year)}")
+days_in_month = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31,]
+month = 3
+print(f"Number of days in month {month}: {days_in_month[month]}")
+def day_of_week(year, month, day):
+    """
+    Zeller's Congruence algorithm to calculate the day of the week.
+    Returns 0 for Saturday, 1 for Sunday, and so on.
+    """
+    if month < 3:
+        month += 12
+        year -= 1
+    K = year % 100
+    J = year // 100
+    day_of_week = (day + 13 * (month + 1) // 5 + K + K // 4 + J // 4 - 2 * J) % 7
+    return day_of_week
+
+
+test_year = 2023
+test_month = 3
+test_day = 6
+print(f"Day of the week for {test_year}-{test_month}-{test_day}: {day_of_week(test_year, test_month, test_day)}")
+sundays_on_first = 0
+
+for year in range(1901, 2001):
+    for month in range(1, 13):
+        if day_of_week(year, month, 1) == 1:  
+            sundays_on_first += 1
+
+print(f"Number of Sundays falling on the first day of the month: {sundays_on_first}")
+
+def is_leap_year(year):
+    if year % 4 != 0:
+        return False
+    elif year % 100 != 0:
+        return True
+    elif year % 400 != 0:
+        return False
+    else:
+        return True
+
+def days_in_month(year, month):
+    if month == 2 and is_leap_year(year):
+        return 29
+    else:
+        days_in_month = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+        return days_in_month[month]
+
+def day_of_week(year, month, day):
+    if month < 3:
+        month += 12
+    k = year % 100
+    j = year // 100
+
+    day_of_week = (day + 13 * (month + 1) // 5 + k + k // 4 + j // 4 - 2 * j) % 7
+
+    return day_of_week
+
+sundays_on_first = 0
+
+for year in range(1901, 2001):
+    for month in range(1, 13):
+        if day_of_week(year, month, 1) == 1:  # Checking if the first day is a Sunday
+            sundays_on_first += 1
+
+print(f"Number of Sundays falling on the first day of the month: {sundays_on_first}")
