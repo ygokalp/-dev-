@@ -1,0 +1,11 @@
+import math
+
+def count_routes(grid_size):
+    n = grid_size[0]
+    m = grid_size[1]
+    routes = math.factorial(n + m - 2) // (math.factorial(n - 1) * math.factorial(m - 1))
+    return routes
+
+grid_size = (20, 20)
+result = count_routes(grid_size)
+print("Number of routes in a 20x20 grid:", result)

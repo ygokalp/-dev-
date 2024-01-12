@@ -1,0 +1,20 @@
+def alphabetical_value(name):
+    return sum(ord(char) - ord('A') + 1 for char in name)
+
+def total_name_scores(filename):
+    with open(filename, 'r') as file:
+        names = sorted(file.read().replace('"', '').split(','))
+
+    total_score = 0
+
+    for i, name in enumerate(names, start=1):
+        score = alphabetical_value(name) * i
+        total_score += score
+
+    return total_score
+
+# Replace 'path/to/names.txt' with the actual path to your names.txt file
+filename = 'path/to/names.txt'
+result = total_name_scores(filename)
+
+print("Total of all the name scores:", result)
